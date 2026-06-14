@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observasi Kegiatan Pembelajaran PJOK di SMK MA'ARIF NU JAKARTA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url('PJOK 1.jpeg');
+    background-size:cover;
+    background-position:center;
+}
+
+.container{
+    width: 420px;
+    max-width: 90%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
+
+.left{
+    flex:1;
+    background:linear-gradient(135deg,#0F766E,#16A34A);
+    color:white;
+    padding:50px;
+}
+
+.left h1{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.left p{
+    line-height:1.8;
+}
+
+.feature{
+    margin-top:30px;
+}
+
+.feature li{
+    list-style:none;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+.right{
+    padding:50px;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo h2{
+    color:#0F766E;
+}
+
+.logo p{
+    color:#666;
+    font-size:14px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+.input-group input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    outline:none;
+}
+
+.input-group input:focus{
+    border-color:#0F766E;
+}
+
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#0F766E;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#115E59;
+}
+
+.footer{
+    margin-top:20px;
+    text-align:center;
+    color:#777;
+    font-size:13px;
+}
+
+.error{
+    text-align:center;
+    color:red;
+    margin-top:10px;
+}
+
+@media(max-width:768px){
+.container{
+    flex-direction:column;
+}
+.left,.right{
+    padding:30px;
+}
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+    <div class="right">
+
+        <div class="logo">
+                <img src="LOGO SMK MAARIF.jpeg" alt="Logo Sekolah" width="90">
+            <h2>E-PJOK SMK MA'ARIF NU JAKARTA</h2>
+            <p>Sistem Evaluasi Pembelajaran Pembelajaran Pendidikan Jasmani Olahraga dan Kesehatan</p>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="text" id="username">
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password">
+            </div>
+
+            <div class="input-group">
+                <label>Login Sebagai</label>
+                <select id="role">
+                    <option>Siswa</option>
+                    <option>Guru</option>
+                    <option>Administrator</option>
+                </select>
+            </div>
+
+            <button type="submit">Masuk</button>
+
+        </form>
+    </div>
+</div>
+<script>
+document.getElementById("loginForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const username =
+        document.getElementById("username").value;
+
+    const role =
+        document.getElementById("role").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    try {
+
+        await fetch(
+        "https://script.google.com/macros/s/AKfycbyqoWgE_wa7Es1aob7B2s0jLKGYRgoQH7s3NdRgrpqWH8TN-ERX4ycQt2dB099tN_LY6w/exec",
+        {
+            method:"POST",
+            mode: "no-cors",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                username:username,
+                role:role,
+                password:password
+            })
+        });
+
+        alert("Login Berhasil");
+
+    } catch(error){
+
+        console.error(error);
+        alert(error);
+
+    }
+
+});
+</script>
+
+</body>
+</html>
