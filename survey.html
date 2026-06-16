@@ -124,17 +124,24 @@ data["q"+i] =
 document.getElementById("q"+i).value;
 }
 
-await fetch(
-"https://script.google.com/macros/s/AKfycbyqoWgE_wa7Es1aob7B2s0jLKGYRgoQH7s3NdRgrpqWH8TN-ERX4ycQt2dB099tN_LY6w/exec",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify(data)
-});
+try {
 
-alert("Terima kasih, survey berhasil dikirim");
+  await fetch(
+    "https://script.google.com/macros/s/AKfycbyqoWgE_wa7Es1aob7B2s0jLKGYRgoQH7s3NdRgrpqWH8TN-ERX4ycQt2dB099tN_LY6w/exec",
+    {
+      method:"POST",
+      body:JSON.stringify(data)
+    }
+  );
+
+  alert("Terima kasih, survey berhasil dikirim");
+
+} catch(err){
+
+  console.error(err);
+  alert("Gagal mengirim survey");
+
+}
 
 });
 
