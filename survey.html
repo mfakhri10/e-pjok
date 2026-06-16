@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey PJOK</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+h2{
+    text-align:center;
+    color:#0F766E;
+}
+
+.question{
+    margin-bottom:20px;
+}
+
+label{
+    font-weight:bold;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+}
+
+button{
+    background:#0F766E;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>Survey Evaluasi Pembelajaran PJOK</h2>
+
+<input type="text" id="nama" placeholder="Nama Lengkap" required>
+<br><br>
+<input type="text" id="kelas" placeholder="Kelas" required>
+<br><br>
+
+<form id="surveyForm">
+
+<div id="questions"></div>
+
+<button type="submit">Kirim Survey</button>
+
+</form>
+
+</div>
+
+<script>
+
+const pertanyaan = [
+"Materi PJOK mudah dipahami",
+"Guru menjelaskan materi dengan jelas",
+"Media pembelajaran menarik",
+"Kegiatan praktik sesuai materi",
+"Pembelajaran membuat saya aktif bergerak",
+"Saya termotivasi berolahraga",
+"Guru memberi kesempatan bertanya",
+"Sarana olahraga mendukung pembelajaran",
+"Saya senang mengikuti PJOK",
+"Saya puas dengan pembelajaran PJOK"
+];
+
+let html = "";
+
+pertanyaan.forEach((item,index)=>{
+
+html += `
+<div class="question">
+<label>${index+1}. ${item}</label>
+<select id="q${index+1}" required>
+<option value="">Pilih Nilai</option>
+<option value="5">5 - Sangat Setuju</option>
+<option value="4">4 - Setuju</option>
+<option value="3">3 - Cukup</option>
+<option value="2">2 - Kurang Setuju</option>
+<option value="1">1 - Tidak Setuju</option>
+</select>
+</div>
+`;
+
+});
+
+document.getElementById("questions").innerHTML = html;
+
+document.getElementById("surveyForm")
+.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+let data = {
+tipe:"survey",
+nama:document.getElementById("nama").value,
+kelas:document.getElementById("kelas").value
+};
+
+for(let i=1;i<=10;i++){
+data["q"+i] =
+document.getElementById("q"+i).value;
+}
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbyqoWgE_wa7Es1aob7B2s0jLKGYRgoQH7s3NdRgrpqWH8TN-ERX4ycQt2dB099tN_LY6w/exec",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(data)
+});
+
+alert("Terima kasih, survey berhasil dikirim");
+
+});
+
+</script>
+
+</body>
+</html>
