@@ -1,89 +1,298 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Survey PJOK</title>
+
+<title>Survey Evaluasi PJOK</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
 body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    padding:20px;
+
+background:
+linear-gradient(
+rgba(0,0,0,0.55),
+rgba(0,0,0,0.55)
+),
+url("https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+min-height:100vh;
+
+padding:40px 20px;
+}
+
+.logo{
+    width:100px;
+    margin-bottom:15px;
 }
 
 .container{
-    max-width:900px;
-    margin:auto;
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,.1);
+
+max-width:900px;
+margin:auto;
+
+background:rgba(255,255,255,0.95);
+
+backdrop-filter:blur(10px);
+
+border-radius:25px;
+
+padding:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+
 }
 
-h2{
-    text-align:center;
-    color:#0F766E;
+.header{
+
+text-align:center;
+margin-bottom:25px;
+
+}
+
+.header h1{
+
+color:#0f766e;
+font-size:35px;
+margin-bottom:10px;
+
+}
+
+.header p{
+
+color:#666;
+font-size:15px;
+
+}
+
+.banner{
+
+width:100%;
+height:260px;
+
+overflow:hidden;
+
+border-radius:20px;
+
+margin-bottom:25px;
+
+}
+
+.banner img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
+}
+
+.info-input{
+
+width:100%;
+
+padding:14px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+font-size:15px;
+
+margin-bottom:15px;
+
 }
 
 .question{
-    margin-bottom:20px;
+
+background:#f8fafc;
+
+padding:18px;
+
+border-radius:15px;
+
+margin-bottom:18px;
+
+transition:0.3s;
+
 }
 
-label{
-    font-weight:bold;
+.question:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.question label{
+
+display:block;
+
+margin-bottom:10px;
+
+font-weight:600;
+
+color:#1f2937;
+
 }
 
 select{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
+
+width:100%;
+
+padding:12px;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+font-size:14px;
+
 }
 
 button{
-    background:#0F766E;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:5px;
-    cursor:pointer;
+
+width:100%;
+
+padding:15px;
+
+background:#0f766e;
+
+color:white;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+
 }
+
+button:hover{
+
+background:#115e59;
+
+}
+
+.footer{
+
+text-align:center;
+
+margin-top:20px;
+
+color:#666;
+
+font-size:14px;
+
+}
+
 </style>
+
 </head>
+
 <body>
 
 <div class="container">
 
-<h2>Survey Evaluasi Pembelajaran PJOK</h2>
+<div class="header">
 
-<input type="text" id="nama" placeholder="Nama Lengkap" required>
-<br><br>
-<input type="text" id="kelas" placeholder="Kelas" required>
-<br><br>
+<img src="LOGO SMK MAARIF.jpeg" class="logo">
+
+<h1>Survey Evaluasi PJOK</h1>
+
+<p>
+Berikan penilaian Anda terhadap proses pembelajaran
+Pendidikan Jasmani, Olahraga dan Kesehatan
+</p>
+
+</div>
+
+<div class="banner">
+
+<img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1600&q=80">
+
+</div>
+
+<input
+type="text"
+id="nama"
+class="info-input"
+placeholder="Nama Lengkap"
+required>
+
+<input
+type="text"
+id="kelas"
+class="info-input"
+placeholder="Kelas"
+required>
 
 <form id="surveyForm">
 
 <div id="questions"></div>
 
-<button type="submit">Kirim Survey</button>
+<button type="submit">
+Kirim Survey
+</button>
 
 </form>
+
+<div class="footer">
+
+SMK Ma'arif NU Jakarta © 2026
+
+<p>
+Muhammad Fakhri Wahdan,S,Or
+
+</div>
 
 </div>
 
 <script>
 
 const pertanyaan = [
-"Materi PJOK mudah dipahami",
-"Guru menjelaskan materi dengan jelas",
-"Media pembelajaran menarik",
+
+"Gur Memberikan Pembelajaran dengan Menarik",
+
+"Guru memberikan hal yang baru saya ketahui tentang olahraga",
+
+"Media/Alat pembelajaran sesuai dengan cabang olahraga",
+
 "Kegiatan praktik sesuai materi",
+
 "Pembelajaran membuat saya aktif bergerak",
-"Saya termotivasi berolahraga",
-"Guru memberi kesempatan bertanya",
-"Sarana olahraga mendukung pembelajaran",
-"Saya senang mengikuti PJOK",
-"Saya puas dengan pembelajaran PJOK"
+
+"Praktik pembelajaran yang dilakukan membosankan",
+
+"Saya lebih suka olahraga dilakukan dilapangan",
+
+"Guru memberikan contoh teknik ketika praktik pembelajaran",
+
+"Guru memberikan kesempatan yang sama ketika praktik (tidak pilih kasih)",
+
+"Saya puas terhadap pembelajaran PJOK"
+
 ];
 
 let html = "";
@@ -91,17 +300,43 @@ let html = "";
 pertanyaan.forEach((item,index)=>{
 
 html += `
+
 <div class="question">
-<label>${index+1}. ${item}</label>
+
+<label>
+${index+1}. ${item}
+</label>
+
 <select id="q${index+1}" required>
-<option value="">Pilih Nilai</option>
-<option value="5">5 - Sangat Setuju</option>
-<option value="4">4 - Setuju</option>
-<option value="3">3 - Cukup</option>
-<option value="2">2 - Kurang Setuju</option>
-<option value="1">1 - Tidak Setuju</option>
+
+<option value="">
+Pilih Penilaian
+</option>
+
+<option value="5">
+5 - Sangat Setuju
+</option>
+
+<option value="4">
+4 - Setuju
+</option>
+
+<option value="3">
+3 - Cukup
+</option>
+
+<option value="2">
+2 - Kurang Setuju
+</option>
+
+<option value="1">
+1 - Tidak Setuju
+</option>
+
 </select>
+
 </div>
+
 `;
 
 });
@@ -114,32 +349,45 @@ document.getElementById("surveyForm")
 e.preventDefault();
 
 let data = {
+
 tipe:"survey",
+
 nama:document.getElementById("nama").value,
+
 kelas:document.getElementById("kelas").value
+
 };
 
 for(let i=1;i<=10;i++){
+
 data["q"+i] =
 document.getElementById("q"+i).value;
+
 }
 
-try {
+try{
 
-  await fetch(
-    "https://script.google.com/macros/s/AKfycbyqoWgE_wa7Es1aob7B2s0jLKGYRgoQH7s3NdRgrpqWH8TN-ERX4ycQt2dB099tN_LY6w/exec",
-    {
-      method:"POST",
-      body:JSON.stringify(data)
-    }
-  );
+await fetch(
 
-  alert("Terima kasih, survey berhasil dikirim");
+"https://script.google.com/macros/s/AKfycbyqoWgE_wa7Es1aob7B2s0jLKGYRgoQH7s3NdRgrpqWH8TN-ERX4ycQt2dB099tN_LY6w/exec",
 
-} catch(err){
+{
+method:"POST",
+body:JSON.stringify(data)
+}
 
-  console.error(err);
-  alert("Gagal mengirim survey");
+);
+
+alert("Terima kasih, survey berhasil dikirim.");
+
+window.location.href =
+"https://mfakhri10.github.io/e-pjok/";
+
+}catch(error){
+
+alert("Gagal mengirim survey");
+
+console.log(error);
 
 }
 
