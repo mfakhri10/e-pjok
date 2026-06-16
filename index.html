@@ -210,6 +210,7 @@ document.getElementById("loginForm")
                 "Content-Type":"application/json"
             },
             body:JSON.stringify({
+                tipe:"login",
                 username:username,
                 role:role,
                 password:password
@@ -217,6 +218,8 @@ document.getElementById("loginForm")
         });
 
         alert("Login Berhasil");
+
+        window.location.href = "survey.html";
 
     } catch(error){
 
